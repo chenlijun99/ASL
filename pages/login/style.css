@@ -1,0 +1,9 @@
+body {
+	background-color: #DADADA;
+}
+body > .login-form {
+	height: 100%;
+}
+.login-form > * {
+	max-width: 450px;
+}
