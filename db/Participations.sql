@@ -1,0 +1,14 @@
+CREATE TABLE Participations (
+	student CHAR(16) NOT NULL,
+	activity INTEGER NOT NULL,
+	mark TINYINT NOT NULL,
+	evaluation VARCHAR(1024),
+
+	PRIMARY KEY(student, activity),
+	FOREIGN KEY (student) REFERENCES Students(cf)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE,
+	FOREIGN KEY(activity) REFERENCES Activities(id)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);

@@ -1,0 +1,10 @@
+.ui.grid {
+	height: 100%;
+	margin: 0;
+}
+.ui.grid .row {
+	padding: 0;
+}
+.ui.grid .column {
+	padding: 0 !important;
+}

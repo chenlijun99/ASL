@@ -1,0 +1,7 @@
+CREATE TABLE Activities (
+	id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	name VARCHAR(128) NOT NULL,
+	description VARCHAR(1024),
+	startDate DATE,
+	endDate Date
+);

@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<title>Login</title>
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"] . "/controllers/dependency_manager.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/services/dependency_manager.php");
 require_vendor_style("semantic-ui");
 ?>
 <link rel="stylesheet" href="style.css"/>
