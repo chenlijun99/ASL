@@ -3,19 +3,7 @@
 
 //Header("Location: http://$_SERVER[SERVER_NAME]/pages/login/?error=401"); 
 ?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Dashboard</title>
-	</head>
-	<body>
+
 <?php
-
-require_component("Appbar");
-
-$appbar = new Appbar();
-echo $appbar->getHTML();
-
+echo (new Componentizer\Renderer(file_get_contents('template.html', FILE_USE_INCLUDE_PATH)))->render();
 ?>
-	</body>
-</html>

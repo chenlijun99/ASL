@@ -1,1 +1,1 @@
-php_value auto_prepend_file "framework/loader.php"
+php_value auto_prepend_file "vendor/autoload.php"
