@@ -1,9 +1,28 @@
-<div class="ui sixteen column grid">
-	<div class="row">
-		<div class="thirteen wide column">
-			<div class="ui basic segment container">
+<link rel="stylesheet" href="style.css"/>
+<script src="init.js"></script>
+
+<div class="pushable">
+	<div class="ui sidebar">
+		<navigation-menu></navigation-menu>
+	</div>
+
+	<div class="ui grid fill no-spacing pusher">
+		<div class="row">
+			<navigation-menu class="full-height three wide computer column tablet or lower hidden">
+			</navigation-menu>
+			<div class="thirteen wide computer sixteen wide mobile column">
+				<app-bar>
+					<prepend>
+						<a id="sidebar-trigger" class="launch icon item mobile tablet only ">
+							<i class="content icon"></i>
+						</a>
+					</prepend>
+				</app-bar>
+
+				<div class="main-area fill">
+
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="init.js"></script>

@@ -1,4 +1,4 @@
-$('.ui.dropdown')
+$('app-bar .ui.dropdown')
 	.dropdown({
 		keepOnScreen: true
 	});

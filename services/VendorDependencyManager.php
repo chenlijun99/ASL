@@ -7,16 +7,13 @@ class VendorDependencyManager
 	/**
 	 * Require a css dependency.
 	 *
-	 * Get a html link tag with proper href path
-	 * that can be used to include the specified vendor stylesheet
-	 *
 	 * @param $name
 	 * The name of the css dependency that you want to obtain
 	 *
-	 * @returns A string representing the HTML link tag that could be used to include
+	 * @returns A string representing the HTML link tag(s) that could be used to include
 	 * the vendor stylesheet.
 	 *
-	 * A tipical usage is following
+	 * A typical usage is following
 	 *
 	 * ```
 	 * echo require_vendor_style("semantic-ui");
@@ -24,11 +21,23 @@ class VendorDependencyManager
 	 */
 	public static function requireStyle($name) {
 		static $paths = array(
-			"semantic-ui" => "/node_modules/semantic-ui/dist/semantic.min.css"
+			"semantic-ui" => [
+				"/node_modules/semantic-ui/dist/semantic.min.css",
+				"/styles/semantic-ui-media-queries.css",
+				"/styles/semantic-ui-no-spacing-grid.css"
+			]
 		);
 
 		if (array_key_exists($name, $paths)) {
-			return "<link rel=\"stylesheet\" href=\"$paths[$name]\" />\n";
+			if (is_array($paths[$name])) {
+				$link = "";
+				foreach ($paths[$name] as $path) {
+					$link .= "<link rel=\"stylesheet\" href=\"$path\" />\n"; 
+				}
+				return $link;
+			} else {
+				return "<link rel=\"stylesheet\" href=\"$paths[$name]\" />\n";
+			}
 		} else {
 			die("Path for css file $name not defined");
 		}
@@ -37,16 +46,13 @@ class VendorDependencyManager
 	/**
 	 * Require a js dependency.
 	 *
-	 * Get a html script tag with proper src path
-	 * that can be used to include the specified vendor script
-	 *
 	 * @param $name
 	 * The name of the js dependency that you want to obtain
 	 *
-	 * @returns A string representing the HTML script tag that could be used to include
+	 * @returns A string representing the HTML script tag(s) that could be used to include
 	 * the vendor script.
 	 *
-	 * A tipical usage is following
+	 * A typical usage is following
 	 *
 	 * ```
 	 * echo require_vendor_script("semantic-ui");

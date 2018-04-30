@@ -83,7 +83,7 @@ class Renderer
 	{
 		$tagUrlAttributeMap = array(
 			'script' =>  "src",
-			"style" => "href",
+			"link" => "href",
 			"img" => "src"
 		);
 

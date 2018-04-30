@@ -1,3 +1,5 @@
+<script src="init.js"></script>
+
 <div class="ui menu inverted borderless attached">
 	<div class="header item">
 		Piattaforma ASL
@@ -8,12 +10,20 @@
 			<img src="assets/user.png" style="height: 24px; width: 24px;" class="ui circular image" />
 			<i class="dropdown icon"></i>
 			<div class="menu">
-				<div class="item">example@email.com</div>
-				<div class="item"><i class="setting icon"></i>Profilo</div>
-				<div class="item"><i class="privacy icon"></i>Cambia password</div>
+				<div class="item">
+					example@email.com
+				</div>
+				<a class="item" href="/pages/profile/">
+					<i class="setting icon"></i>
+					Profilo
+				</a>
 				<div class="divider"></div>
-				<div class="item"><i class="sign out icon"></i>Logout</div>
+				<a class="item" href="/pages/login/">
+					<i class="sign out icon"></i>
+					Logout
+				</a>
 			</div>
 		</div>
 	</div>
 </div>
+
