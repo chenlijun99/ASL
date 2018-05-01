@@ -1,5 +1,19 @@
 $(function() {
-	$('login-form .ui.form')
+	initUI();
+
+	var permissionHandler = new ASLPermission($('registration-form'));
+	permissionHandler.insert("all");
+
+	$('div.field select[name="role"]').change(function() {
+		permissionHandler.insert($(this).val());
+	});
+});
+
+function initUI() {
+	$('registration-form select.ui.dropdown')
+		.dropdown();
+
+	$('registration-form .ui.form')
 		.form({
 			fields: {
 				email: {
@@ -25,6 +39,5 @@ $(function() {
 					]
 				}
 			}
-		})
-	;
-});
+		});
+}

@@ -5,10 +5,10 @@
 	padding: 0 !important;
 }
 
-.ui.grid > .column > * {
+.ui.grid > .column.no-spacing > * {
 	padding: 0 !important;
 }
 
-.ui.grid > .row > * {
+.ui.grid > .row.no-spacing > * {
 	padding: 0 !important;
 }

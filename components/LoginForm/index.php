@@ -1,6 +1,7 @@
 <?php
 
 use ASL\ASLComponent;
+use \Wa72\HtmlPageDom\HtmlPageCrawler;
 
 class LoginForm extends ASLComponent
 {
@@ -13,7 +14,6 @@ class LoginForm extends ASLComponent
 
 		$form = $element->filter("form");
 		$form->attr("action", $element->attr("action"));
-
 		if (isset($_GET["login_error"])) {
 			$form->append(
 				file_get_contents("$_GET[login_error].html", FILE_USE_INCLUDE_PATH)

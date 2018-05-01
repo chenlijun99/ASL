@@ -8,12 +8,22 @@
 	</head>
 	<body>
 		<div class="ui grid no-spacing fill">
-			<login-form 
-				action="/pages/login/process_login.php"
-				class="six wide computer
+			<div class="six wide computer
 				eight wide tablet
 				fourteen wide mobile
-				middle aligned centered column"></login-form>
+				middle aligned centered column">
+				<login-form 
+					action="/pages/login/process_login.php"
+					registration-link="/pages/registration">
+				</login-form>
+				<div class="ui message">
+					Non hai ancora un account?
+					<a id="registration-dialog-trigger" href="#">Registrati</a>
+				</div>
+			</div>
 		</div>
+
+		<registration-dialog></registration-dialog>
+		<script src="initModal.js"></script>
 	</body>
 </html>

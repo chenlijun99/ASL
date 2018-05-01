@@ -10,3 +10,7 @@
 .full-width {
 	width: 100%;
 }
+
+.hidden {
+	display: none !important;
+}

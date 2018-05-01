@@ -11,7 +11,9 @@ abstract class ASLComponent extends SemanticUiComponent
 			"<link rel=\"stylesheet\" href=\"/styles/helper.css\" />\n" .
 
 			VendorDependencyManager::requireScript("jquery") .
-			VendorDependencyManager::requireScript("semantic-ui")
+			VendorDependencyManager::requireScript("semantic-ui") .
+			"<script src=\"/scripts/ASLHelper.js\"></script>\n" .
+			"<script src=\"/scripts/ASLPermission.js\"></script>\n"
 		);
 	}
 }

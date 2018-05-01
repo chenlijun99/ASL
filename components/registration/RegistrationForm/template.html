@@ -1,0 +1,59 @@
+<script src="form.js"></script>
+<form class="ui form attached segment" method="post" action="a">
+	<div class="field">
+		<label>Ruolo</label>
+		<select name="role" class="ui dropdown">
+			<option value=""></option>
+			<option value="teacher">Insegnante</option>
+			<option value="student">Studente</option>
+		</select>
+	</div>
+
+	<h3 class="ui dividing header">Profilo</h3>
+	<div class="two fields" data-permission="student">
+		<div class="field">
+			<label>Cognome</label>
+			<input name="surname" placeholder="Cognome" type="text">
+		</div>
+		<div class="field">
+			<label>Nome</label>
+			<input name="name" placeholder="Nome" type="text">
+		</div>
+	</div>
+	<div class="field" data-permission="student">
+		<label>Età</label>
+		<input name="age" placeholder="Età" type="number" min="1" max="150">
+	</div>
+	<div class="field">
+		<label>Codice fiscale</label>
+		<input name="cf" placeholder="Codice fiscale" type="text">
+	</div>
+
+	<div class="field" data-permission="teacher">
+		<label>Classe</label>
+		<select name="studentClass" multiple class="ui dropdown search">
+		</select>
+	</div>
+	<div class="field" data-permission="student">
+		<label>Classe</label>
+		<select name="studentClass" class="ui dropdown search">
+		</select>
+	</div>
+
+	<h3 class="ui dividing header">Account</h3>
+	<div class="field">
+		<label>Username</label>
+		<input name="username" placeholder="Username" type="text">
+	</div>
+	<div class="field">
+		<label>Password</label>
+		<input name="password" type="password">
+	</div>
+	<div class="inline field">
+		<div class="ui checkbox">
+			<input type="checkbox" id="terms">
+			<label for="terms">I agree to the terms and conditions</label>
+		</div>
+	</div>
+	<div class="ui blue submit button">Submit</div>
+</form>
