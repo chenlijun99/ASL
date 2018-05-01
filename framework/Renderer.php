@@ -11,6 +11,8 @@ class Renderer
 	private $dom;
 	private $head;
 	private $body;
+	private $scripts = array();
+	private $links = array();
 
 	function __construct($html)
 	{
@@ -23,6 +25,52 @@ class Renderer
 	public function render()
 	{
 		$this->compileDOM($this->body);
+
+
+		$links = "";
+		foreach ($this->links as $path => $html) {
+			$links .= $html;
+		}
+		$links = new HtmlPageCrawler($links);
+
+		$scripts = "";
+		foreach ($this->scripts as $path => $html) {
+			$scripts .= $html;
+		}
+		$scripts = new HtmlPageCrawler($scripts);
+
+		$refLink = $this->head
+			 ->filter("link")
+			 ->reduce(function(HtmlPageCrawler $link) {
+				 if (isset($this->links[$link->attr("href")])) {
+					 $link->remove();
+					 return false;
+				 }
+				 return true;
+			 });
+
+		$refScript = $this->dom
+			 ->filter("body > script")
+			 ->reduce(function(HtmlPageCrawler $script) {
+				 if (isset($this->scripts[$script->attr("src")])) {
+					 $script->remove();
+					 return false;
+				 }
+				 return true;
+			 });
+
+		if ($refScript->count() === 0) {
+			$this->body->append($scripts);
+		} else {
+			$scripts->insertBefore($refScript);
+		}
+
+		if ($refLink->count() === 0) {
+			$this->head->append($links);
+		} else {
+			$links->insertBefore($refLink);
+		}
+
 		return $this->dom->indent();
 	}
 
@@ -43,40 +91,7 @@ class Renderer
 		(new $component["className"])->render($node);
 
 		$this->absolutisePaths($node, $component);
-
-		$links = array();
-		$this->head->append(
-			$node
-				->filter("link")
-				->reduce(function(HtmlPageCrawler $link) use (&$links) {
-					if (isset($links[$link->attr("href")]) || 
-						$this->head->filter("link[href=\"{$link->attr("href")}\"]")->count() !== 0) {
-
-						$link->remove();
-						return false;
-					}
-
-					$links[$link->attr("href")] = true;
-					return true;
-				})
-		);
-
-		$scripts = array();
-		$this->body->append(
-			$node
-				->filter("script")
-				->reduce(function(HtmlPageCrawler $script) use (&$scripts) {
-					if (isset($scripts[$script->attr("src")]) ||
-						$this->dom->filter("body>script[src=\"{$script->attr("src")}\"]")->count() !== 0) {
-
-						$script->remove();
-						return false;
-					}
-
-					$scripts[$script->attr("src")] = true;
-					return true;
-				})
-		);
+		$this->gatherDependencies($node);
 	}
 
 	private function absolutisePaths(HtmlPageCrawler $element, $component) 
@@ -96,6 +111,27 @@ class Renderer
 				}
 			});
 		}
+	}
+
+	private function gatherDependencies(HtmlPageCrawler $element)
+	{
+		$element
+			->filter("link")
+			->each(function(HtmlPageCrawler $link) {
+				if (!isset($this->links[$link->attr("href")])) {
+					$this->links[$link->attr("href")] = $link->saveHTML();
+				} 
+				$link->remove();
+			});
+
+		$element
+			->filter("script")
+			->each(function(HtmlPageCrawler $script) {
+				if (!isset($this->scripts[$script->attr("src")])) {
+					$this->scripts[$script->attr("src")] = $script->saveHTML();
+				}
+				$script->remove();
+			});
 	}
 }
 ?>
