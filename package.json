@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
+    "jquery-serializejson": "^2.8.1",
     "semantic-ui": "^2.3.1"
   },
   "devDependencies": {},

@@ -1,6 +1,6 @@
 <?php
 
-namespace Componentizer;
+namespace Framework;
 
 use \Wa72\HtmlPageDom\HtmlPageCrawler;
 use \Wa72\HtmlPageDom\HtmlPage;

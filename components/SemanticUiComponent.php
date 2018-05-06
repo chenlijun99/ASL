@@ -2,7 +2,7 @@
 
 namespace ASL;
 
-use \Componentizer\Component;
+use \Framework\Component;
 
 abstract class SemanticUiComponent implements Component
 {

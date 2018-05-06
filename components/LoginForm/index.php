@@ -1,13 +1,13 @@
 <?php
 
-use ASL\ASLComponent;
+use ASL\ASLForm;
 use \Wa72\HtmlPageDom\HtmlPageCrawler;
 
-class LoginForm extends ASLComponent
+class LoginForm extends ASLForm
 {
 	public function render($element)
 	{
-		ASLComponent::render($element)
+		ASLForm::render($element)
 			->append(
 				file_get_contents("template.html", FILE_USE_INCLUDE_PATH)
 			);

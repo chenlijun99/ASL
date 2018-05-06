@@ -1,6 +1,6 @@
 <?php
 
-namespace Componentizer;
+namespace Framework;
 
 interface Component 
 {

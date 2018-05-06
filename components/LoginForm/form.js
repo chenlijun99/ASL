@@ -1,4 +1,18 @@
 $(function() {
+
+	$('login-form form').submit(function($event) {
+		$.ajax({
+			type: "POST",
+			data: this,
+			url: "/apis/login.php",
+			success: function(result, textStatus, request) {
+			},
+			error: function(result) {
+			}
+		});
+		$event.preventDefault();
+	});
+
 	$('login-form .ui.form')
 		.form({
 			fields: {

@@ -2,9 +2,10 @@
 
 namespace ASL;
 
-class Database
+class DatabaseService extends \Framework\InjectableValue
 {
-	public static function getConnection() {
+	public function __invoke() 
+	{
 		$host = 'localhost';
 		$db   = 'ASL';
 		$user = 'root';
@@ -16,6 +17,7 @@ class Database
 			\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
 			\PDO::ATTR_EMULATE_PREPARES   => false,
 		];
+
 		return new \PDO($dsn, $user, $pass, $opt);
 	}
 }

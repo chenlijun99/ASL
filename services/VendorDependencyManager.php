@@ -61,7 +61,8 @@ class VendorDependencyManager
 	public static function requireScript($name) {
 		static $paths = array(
 			"semantic-ui" => "/node_modules/semantic-ui/dist/semantic.min.js",
-			"jquery" => "/node_modules/jquery/dist/jquery.min.js"
+			"jquery" => "/node_modules/jquery/dist/jquery.min.js",
+			"jquery-serializejson" => "/node_modules/jquery-serializejson/jquery.serializejson.min.js"
 		);
 
 		if (array_key_exists($name, $paths)) {

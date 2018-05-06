@@ -3,9 +3,22 @@ $(function() {
 
 	var permissionHandler = new ASLPermission($('registration-form'));
 	permissionHandler.insert("all");
-
 	$('div.field select[name="role"]').change(function() {
 		permissionHandler.insert($(this).val());
+	});
+
+	$('registration-form .ui.form').submit(function($event) {
+		$.ajax({
+			type: "PUT",
+			url: "/apis/register.php",
+			success: function(result) {
+				console.log(result);
+			},
+			error: function(result) {
+				console.log(result);
+			}
+		});
+		$event.preventDefault();
 	});
 });
 
