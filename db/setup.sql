@@ -4,10 +4,21 @@ CREATE DATABASE ASL;
 
 USE ASL;
 
+source ./Schools.sql;
+source ./Courses.sql;
+source ./Businesses.sql;
+
 source ./Users.sql;
-source ./Activities.sql;
-source ./Students.sql;
-source ./Teachers.sql;
-source ./Participations.sql;
-source ./StduentClasses.sql;
+source ./profile/Profiles.sql;
+source ./profile/Admins.sql;
+source ./profile/SchoolManagers.sql;
+source ./profile/Teachers.sql;
+source ./profile/Students.sql;
+source ./profile/BusinessTutors.sql;
+
+source ./StudentClasses.sql;
+
 source ./StudentClassMemberships.sql;
+
+source ./Activities.sql;
+source ./Participations.sql;
