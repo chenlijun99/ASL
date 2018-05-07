@@ -1,9 +1,18 @@
 <script src="form.js"></script>
 <form class="ui form attached segment">
+	<h3 class="ui dividing header">Account</h3>
+	<div class="field">
+		<label>Email</label>
+		<input name="user[email]" placeholder="Email" type="email">
+	</div>
+	<div class="field">
+		<label>Password</label>
+		<input name="user[password]" placeholder="Password" type="password">
+	</div>
 	<div class="field">
 		<label>Ruolo</label>
-		<select name="role" class="ui dropdown">
-			<option value=""></option>
+		<select name="user[role]" class="ui dropdown">
+			<option value="">Seleziona il tuo ruolo</option>
 			<option value="teacher">Insegnante</option>
 			<option value="student">Studente</option>
 		</select>
@@ -13,43 +22,26 @@
 	<div class="two fields">
 		<div class="field">
 			<label>Cognome</label>
-			<input name="surname" placeholder="Cognome" type="text">
+			<input name="profile[surname]" placeholder="Cognome" type="text">
 		</div>
 		<div class="field">
 			<label>Nome</label>
-			<input name="name" placeholder="Nome" type="text">
+			<input name="profile[name]" placeholder="Nome" type="text">
 		</div>
 	</div>
 	<div class="field">
 		<label>Codice fiscale</label>
-		<input name="cf" placeholder="Codice fiscale" type="text">
+		<input name="profile[cf]" placeholder="Codice fiscale" type="text">
 	</div>
 
 	<!--<div class="field" data-permission="teacher">-->
 		<!--<label>Classe</label>-->
 		<!--<select name="studentClass" multiple class="ui dropdown search">-->
-		<!--</select>-->
-	<!--</div>-->
+			<!--</select>-->
+		<!--</div>-->
 	<!--<div class="field" data-permission="student">-->
 		<!--<label>Classe</label>-->
 		<!--<select name="studentClass" class="ui dropdown search">-->
-		<!--</select>-->
-	<!--</div>-->
-
-	<h3 class="ui dividing header">Account</h3>
-	<div class="field">
-		<label>Username</label>
-		<input name="username" placeholder="Username" type="text">
-	</div>
-	<div class="field">
-		<label>Password</label>
-		<input name="password" type="password">
-	</div>
-	<div class="inline field">
-		<div class="ui checkbox">
-			<input type="checkbox" id="terms">
-			<label for="terms">I agree to the terms and conditions</label>
-		</div>
-	</div>
-	<div class="ui blue submit button">Submit</div>
+			<!--</select>-->
+		<!--</div>-->
 </form>

@@ -25,7 +25,8 @@ class VendorDependencyManager
 				"/node_modules/semantic-ui/dist/semantic.min.css",
 				"/styles/semantic-ui-media-queries.css",
 				"/styles/semantic-ui-no-spacing-grid.css"
-			]
+			],
+			"toastr" => "/node_modules/toastr/build/toastr.min.css"
 		);
 
 		if (array_key_exists($name, $paths)) {
@@ -60,13 +61,25 @@ class VendorDependencyManager
 	 */
 	public static function requireScript($name) {
 		static $paths = array(
-			"semantic-ui" => "/node_modules/semantic-ui/dist/semantic.min.js",
+			"semantic-ui" => [
+				"/node_modules/semantic-ui/dist/semantic.min.js",
+				"/scripts/SemanticUiDefaultApi.js"
+			],
+			"toastr" => "/node_modules/toastr/build/toastr.min.js",
 			"jquery" => "/node_modules/jquery/dist/jquery.min.js",
 			"jquery-serializejson" => "/node_modules/jquery-serializejson/jquery.serializejson.min.js"
 		);
 
 		if (array_key_exists($name, $paths)) {
-			return "<script src=\"$paths[$name]\"></script>\n";
+			if (is_array($paths[$name])) {
+				$script = "";
+				foreach ($paths[$name] as $path) {
+					$script .= "<script src=\"$path\"></script>\n";
+				}
+				return $script;
+			} else {
+				return "<script src=\"$paths[$name]\"></script>\n";
+			}
 		} else {
 			die("Path for js file $name not defined");
 		}

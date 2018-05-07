@@ -4,28 +4,36 @@ namespace ASL;
 
 class AuthenticationService extends \Framework\Injectable
 {
-	function __construct() 
+	private $queryUserByEmail;
+
+	public function __construct() 
 	{
 		parent::inject("ASL\DatabaseService as DatabaseService");
 
 		session_start();
+
+		$this->queryUserByEmail =
+		 	$this->DatabaseService->prepare("SELECT * FROM Users WHERE email = :email");
 	}
 
-	function isAuthenticated() 
+	public function isAuthenticated() 
 	{
+		return isset($_SESSION["user"]);
 	}
 
-	function login() 
+	public function login(array $credentials) 
 	{
-		$this->DatabaseService->query();
+		//$credentials["password"] = password_hash($credentials["password"], PASSWORD_DEFAULT);
+		$this->queryUserByEmail->execute($credentials);
+		$result = $this->queryUserByEmail->fetchAll();
 	}
 
-	function logout() 
+	public function logout() 
 	{
 
 	}
 
-	function is($role) 
+	public function is($role) 
 	{
 
 	}

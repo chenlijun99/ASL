@@ -21,7 +21,7 @@ class Injector
 			static::$instance = new static();
 		}
 
-		$injectable = static::$instance->injectables[$name];
+		$injectable = &static::$instance->injectables[$name];
 		// $injectables are instanced only once and cached
 		if (!isset($injectable["instance"])) {
 			$injectable["instance"] = static::createInjectable(static::$instance->injectables[$name]);
