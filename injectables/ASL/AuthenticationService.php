@@ -23,14 +23,24 @@ class AuthenticationService extends \Framework\Injectable
 
 	public function login(array $credentials) 
 	{
-		//$credentials["password"] = password_hash($credentials["password"], PASSWORD_DEFAULT);
 		$this->queryUserByEmail->execute($credentials);
-		$result = $this->queryUserByEmail->fetchAll();
+		$user = $this->queryUserByEmail->fetchAll();
+		if (!empty($user)) {
+			$user = $user[0];
+			$verified = password_verify($credentials["password"], $user["password"]);
+
+			if ($verified === TRUE) {
+				$_SESSION["user"] = $user;
+			}
+
+			return $verified;
+		}
+		return false;
 	}
 
 	public function logout() 
 	{
-
+		unset($_SESSION["user"]);
 	}
 
 	public function is($role) 

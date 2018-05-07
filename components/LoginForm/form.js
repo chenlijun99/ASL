@@ -1,31 +1,36 @@
 $(function() {
+	var form = $('login-form form');
 
-	$('login-form form').submit(function($event) {
-		$.ajax({
-			type: "POST",
-			data: this,
-			url: "/apis/login.php",
-			success: function(result, textStatus, request) {
-			},
-			error: function(result) {
-			}
-		});
-		$event.preventDefault();
-	});
-
-	$('login-form .ui.form')
+	form
 		.form({
+			on: 'blur',
+			onSuccess: function($event) {
+				form.api({
+					on: "now",
+					method: 'POST',
+					data: form[0],
+					url: '/apis/user/login.php',
+					onSuccess: function() {
+						form.form("reset");
+						window.location.replace('/pages/dashboard/');
+					},
+					onFailure: function() {
+						toastr.error('Credenziali errate');
+					}
+				});
+				$event.preventDefault();
+			},
 			fields: {
 				email: {
 					identifier  : 'email',
 					rules: [
 						{
 							type   : 'empty',
-							prompt : 'Si prega di inserire l\'email'
+							prompt : 'Inserisci la tua email'
 						},
 						{
 							type   : 'email',
-							prompt : 'Si prega di inserire un email valido'
+							prompt : 'Email invalido'
 						}
 					]
 				},
@@ -34,10 +39,10 @@ $(function() {
 					rules: [
 						{
 							type   : 'empty',
-							prompt : 'Si prega di inserire la password'
+							prompt : 'Inserisci la password'
 						}
 					]
-				}
+				},
 			}
 		})
 	;
