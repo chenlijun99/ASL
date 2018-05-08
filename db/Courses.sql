@@ -3,5 +3,5 @@ CREATE TABLE Courses (
 	name VARCHAR(100) NOT NULL,
 	targetAmount SMALLINT NOT NULL,
 	
-	description VARCHAR(100)
+	description VARCHAR(1000)
 );

@@ -6,7 +6,7 @@ abstract class ASLForm extends ASLComponent
 {
 	public function render($element)
 	{
-		ASLComponent::render($element);
+		parent::render($element);
 
 		$formValidators = scandir($_SERVER["DOCUMENT_ROOT"] . "/scripts/ASLFormValidators");
 		$scripts = "";

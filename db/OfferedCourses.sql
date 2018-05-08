@@ -1,0 +1,14 @@
+CREATE TABLE OfferedCourses (
+	school INTEGER NOT NULL,
+	course INTEGER NOT NULL,
+
+	PRIMARY KEY(school, course),
+
+	FOREIGN KEY(school) REFERENCES Schools(id)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE,
+
+	FOREIGN KEY(course) REFERENCES Courses(id)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
+);

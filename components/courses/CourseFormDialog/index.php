@@ -1,12 +1,12 @@
 <?php
 
-use ASL\ASLForm;
+use ASL\ASLComponent;
 
-class RegistrationForm extends ASLForm
+class CourseFormDialog extends ASLComponent
 {
 	public function render($element)
 	{
-		parent::render($element)
+		ASLComponent::render($element)
 			->append(
 				parent::getTemplateContent("template.html")
 			);

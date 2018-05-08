@@ -6,6 +6,7 @@ USE ASL;
 
 source ./Schools.sql;
 source ./Courses.sql;
+source ./OfferedCourses.sql
 source ./Businesses.sql;
 
 source ./Users.sql;

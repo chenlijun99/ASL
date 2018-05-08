@@ -61,10 +61,7 @@ class VendorDependencyManager
 	 */
 	public static function requireScript($name) {
 		static $paths = array(
-			"semantic-ui" => [
-				"/node_modules/semantic-ui/dist/semantic.min.js",
-				"/scripts/SemanticUiDefaultApi.js"
-			],
+			"semantic-ui" => "/node_modules/semantic-ui/dist/semantic.min.js",
 			"toastr" => "/node_modules/toastr/build/toastr.min.js",
 			"jquery" => "/node_modules/jquery/dist/jquery.min.js",
 			"jquery-serializejson" => "/node_modules/jquery-serializejson/jquery.serializejson.min.js"
