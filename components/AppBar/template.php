@@ -6,12 +6,14 @@
 	</div>
 	<div class="right menu">
 		<div class="ui dropdown item">
-			<span style="margin-right: 10px; font-weight: bolder">{{ user.name }}</span>
+			<span style="margin-right: 10px; font-weight: bolder">
+				<?php echo $model["profile"]["name"] ?>
+			</span>
 			<img src="assets/user.png" style="height: 24px; width: 24px;" class="ui circular image" />
 			<i class="dropdown icon"></i>
 			<div class="menu">
 				<div class="item">
-					example@email.com
+					<?php echo $model["user"]["email"] ?>
 				</div>
 				<a class="item" href="/pages/profile/">
 					<i class="setting icon"></i>

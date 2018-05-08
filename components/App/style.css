@@ -5,4 +5,5 @@ app {
 
 app .main-area {
 	overflow: auto;
+	padding: 2%;
 }

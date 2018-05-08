@@ -21,6 +21,19 @@ class AuthenticationService extends \Framework\Injectable
 		return isset($_SESSION["user"]);
 	}
 
+	public function isAuthenticatedAs(...$roles) 
+	{
+		if ($this->isAuthenticated()) {
+			$userRole = $_SESSION["user"]["role"];
+			foreach ($roles as $role) {
+				if ($userRole === $role) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	public function login(array $credentials) 
 	{
 		$this->queryUserByEmail->execute($credentials);

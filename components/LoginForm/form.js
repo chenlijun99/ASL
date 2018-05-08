@@ -11,7 +11,6 @@ $(function() {
 					data: form[0],
 					url: '/apis/user/login.php',
 					onSuccess: function() {
-						form.form("reset");
 						window.location.replace('/pages/dashboard/');
 					},
 					onFailure: function() {

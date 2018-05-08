@@ -10,7 +10,7 @@ class Injector
 		foreach ($dependencies as $dependency) {
 			$dependencyInstances[] = static::get($dependency);
 		}
-		call_user_func_array($callback, $dependencyInstances);
+		return call_user_func_array($callback, $dependencyInstances);
 	}
 
 	public static function get($name)

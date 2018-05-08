@@ -11,7 +11,7 @@ class Appbar extends ASLComponent
 
 		ASLComponent::render($element)
 			->append(
-				file_get_contents('template.html', FILE_USE_INCLUDE_PATH)
+				parent::getTemplateContent('template.php')
 			);
 
 		$element->filter(".ui.menu")->prepend($prepend->html());
@@ -21,6 +21,18 @@ class Appbar extends ASLComponent
 		$append->remove();
 
 		return $element;
+	}
+
+	protected function getModel()
+	{
+		return Framework\Injector::invoke(["ASL\\ProfileService"], 
+			function($ProfileService) {
+				$user = $_SESSION["user"];
+				return array(
+					"user" => $user,
+					"profile" => $ProfileService->getByUser($user)[0]
+				);
+			});
 	}
 }
 ?>

@@ -8,8 +8,13 @@ class NavigationMenu extends ASLComponent
 	{
 		return ASLComponent::render($element)
 			->append(
-				file_get_contents('template.html', FILE_USE_INCLUDE_PATH)
+				parent::getTemplateContent('template.php')
 			);
+	}
+
+	protected function getModel()
+	{
+		return array("user" => $_SESSION["user"]);
 	}
 }
 ?>
